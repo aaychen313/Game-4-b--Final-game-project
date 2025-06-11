@@ -1,6 +1,6 @@
-class Platformer extends Phaser.Scene {
+class Platformer2 extends Phaser.Scene {
     constructor() {
-        super("platformerScene");
+        super("platformerScene2");
     }
 
     init() {
@@ -11,7 +11,6 @@ class Platformer extends Phaser.Scene {
         this.PARTICLE_VELOCITY = 50;
         this.SCALE = 2.0;
         this.waitingForRestart = false;
-        this.hasWon = false;
     }
 
     preload() {
@@ -25,13 +24,11 @@ class Platformer extends Phaser.Scene {
 
     create() {
         // tilemap w: 155 tiles, h: 25 tiles, 18x18 px tiles
-        this.map = this.add.tilemap("platformer-level-1", 18, 18, 45, 25);
+        this.map = this.add.tilemap("platformer-level-2", 18, 18, 45, 25);
 
-        this.tileset = this.map.addTilesetImage("kenny_tilemap_packed", "tilemap_tiles");
-        
-        // Create layers
+        this.tileset = this.map.addTilesetImage("food_tilemap_packed", "food_tilemap_tiles");
+
         this.groundLayer = this.map.createLayer("Ground-n-Platforms", this.tileset, 0, 0);
-        this.backgroundLayer = this.map.createLayer("Background", this.tileset, 0, 0);
         this.finishLayer = this.map.createLayer("Finish", this.tileset, 0, 0);
 
         this.groundLayer.setCollisionByProperty({
@@ -140,8 +137,6 @@ class Platformer extends Phaser.Scene {
     finishCollide() {
         this.sound.play("finishSound");
         this.scene.start("winScreen");
-        
-        
     }
 
     update() {
@@ -215,6 +210,4 @@ class Platformer extends Phaser.Scene {
         // Set flag to wait for restart key
         this.waitingForRestart = true;
     }
-
-    
 }
