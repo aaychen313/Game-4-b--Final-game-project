@@ -33,6 +33,8 @@ class Title extends Phaser.Scene {
         repeat: -1
     });
 
+    
+
     // Start game on SPACE
     this.input.keyboard.once('keydown-SPACE', () => {
       this.scene.start('platformerScene');

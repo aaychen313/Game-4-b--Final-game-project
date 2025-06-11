@@ -52,7 +52,7 @@ class Platformer2 extends Phaser.Scene {
 
         this.anims.create({
             key: 'coinAnim', // Animation key
-            frames: this.anims.generateFrameNumbers('tilemap_sheet', 
+            frames: this.anims.generateFrameNumbers('food_tilemap_sheet', 
                 {start: 151, end: 152}
             ),
             frameRate: 10,  // Higher is faster
@@ -60,7 +60,7 @@ class Platformer2 extends Phaser.Scene {
         });
         this.anims.create({
             key: 'flagAnim', // Animation key
-            frames: this.anims.generateFrameNumbers('tilemap_sheet', 
+            frames: this.anims.generateFrameNumbers('food_tilemap_sheet', 
                 {start: 111, end: 112}
             ),
             frameRate: 10,  // Higher is faster
@@ -105,7 +105,7 @@ class Platformer2 extends Phaser.Scene {
         this.physics.add.overlap(my.sprite.player, this.flagGroup, (obj1, obj2) => {
             obj2.destroy(); // remove flag on overlap
             this.sound.play("finishSound");
-            this.scene.start("winScreen");
+            this.scene.start("creditsScreen");
         });
 
         cursors = this.input.keyboard.createCursorKeys();
